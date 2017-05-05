@@ -5,15 +5,13 @@
 
 Modern mobile devices are equipped with multiple network interfaces, including 3G/LTE and WiFi. Bandwidth aggregation over LTE and WiFi links offers an attractive opportunity for supporting bandwidth-intensive services, such as high-quality video streaming, on mobile devices.
 
-GreenBag project introduces an energy-efficient bandwidth aggregation middleware that supports real-time data-streaming services over asymmetric wireless links, requiring no modification to the existing Internet infrastructure.
+[GreenBag project](http://cps.kaist.ac.kr/greenbag) introduces an energy-efficient bandwidth aggregation middleware that supports real-time data-streaming services over asymmetric wireless links, requiring no modification to the existing Internet infrastructure. The [paper](http://cps.kaist.ac.kr/papers/13RTSS_GreenBag_PID2926259.pdf) was published on the 34th IEEE Real-Time Systems Symposium (RTSS '13).
 
 ![Overview](docs/greenbag_overview.png)
 
-This prototpye was developed as part of [a research project](http://cps.kaist.ac.kr/greenbag). The [paper](http://cps.kaist.ac.kr/papers/13RTSS_GreenBag_PID2926259.pdf) was published on the 34th IEEE Real-Time Systems Symposium (RTSS '13).
-
 ## Demo
 
-### Dual Link vs Single Link on mobile phones
+### Dual-link vs single-link download speed
 
 [![Dual link vs single link](http://img.youtube.com/vi/m63600JUN-M/0.jpg)](https://www.youtube.com/watch?v=m63600JUN-M)
 
@@ -26,12 +24,12 @@ This prototpye was developed as part of [a research project](http://cps.kaist.ac
 [![Energy Consumption Comparison](http://img.youtube.com/vi/MqXcb8vExsg/0.jpg)](https://www.youtube.com/watch?v=MqXcb8vExsg)
 
 ## How to build
-This source code can be built for Android or Linux desktop platforms. The following build commands for desktops were tested on gcc 5.4.0 on Ubuntu 16.04. You can build on Android by using gcc in Android NDK.
+This source code can be built for Android and Linux desktop platforms. The following build commands for desktops were tested on gcc 5.4.0 on Ubuntu 16.04. You can build on Android by using gcc in Android NDK.
 
 * Standalone mode: In this mode, GreenBag works like a typical downloader, such as wget.  
 `make standalone`
 
-* Proxy mode: This is the original mode. Greenbag was designed to use as a proxy to between the server and the video player. However, this mode requires some additional setup.  
+* Proxy mode: In this mode, GreenBag acts as a proxy to between the server and the video player. GreenBag was orignally designed to work on this mode, but it requires some additional setup steps.  
 `make`
 
 ## Server configuration
@@ -53,11 +51,11 @@ The download time should be faster than when using wget to download over a singl
 You can also set bandwidth using [tcconfig](https://github.com/thombashi/tcconfig). An example script is include in [limit_bandwidth_for_testing.sh](scripts/limit_bandwidth_for_testing.sh).
 
 ## Limitations of this implementation
-* Use disk to store in-progress file parts.
-* Does not determine bitrate of videos automatically.
-* Require MaxKeepAliveRequests on the server side.
-* Does not set routing tables automatically.
 * Does not fully support flexible segment sizes, which should be adaptive to network conditions such as bandwidth and RTT.
+* Use disk to store in-progress file parts. Future versions should try to store them in memory.
+* Require MaxKeepAliveRequests on the server side.
+* Does not determine bitrates of videos automatically.
+* Does not setup routing tables on client automatically.
 
 ## How to enable multiple network interfaces on Android
 In order to enable LTE and WiFi simultaneously on Samsung Galaxy S2 phone where the source code of the Android framework was not available, we reversed engineered and modified ConnectivityService in the Android framework. You can find details in [How to Enable Multiple Network Interfaces on Android](https://docs.google.com/document/d/1zpRF1jbZ6egCjiRn0DGuIvaAHzBEEisHnEoX3U4oupE/edit?usp=sharing).

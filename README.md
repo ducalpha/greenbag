@@ -1,4 +1,8 @@
 
+# GreenBag
+
+## Introduction
+
 Modern mobile devices are equipped with multiple network interfaces, including 3G/LTE and WiFi. Bandwidth aggregation over LTE and WiFi links offers an attractive opportunity for supporting bandwidth-intensive services, such as high-quality video streaming, on mobile devices.
 
 GreenBag project introduces an energy-efficient bandwidth aggregation middleware that supports real-time data-streaming services over asymmetric wireless links, requiring no modification to the existing Internet infrastructure.
@@ -28,7 +32,7 @@ This source code can be built for running on Android or Linux desktop platforms.
 * Proxy mode: This is the original mode. Greenbag was designed to use as a proxy to between the server and the video player. However, this mode requires some additional setup.  
 `make`
 
-## Server notes
+## Server configuration
 I tested with server Apache2 which allows an unlimited maximum number of requests during a persistent connection. You should add `MaxKeepAliveRequests 0` on the server's configuration file (e.g., `/etc/apache2/apache2.conf`)
 
 ## Setting multipath interfaces

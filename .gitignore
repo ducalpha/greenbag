@@ -1,0 +1,11 @@
+# output
+gb
+gproxy
+*/gb_params
+
+*.swp
+*.a
+*.o
+
+# Downloaded video files
+*/*.mp4*

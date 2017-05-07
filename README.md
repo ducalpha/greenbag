@@ -23,8 +23,11 @@ Modern mobile devices are equipped with multiple network interfaces, including 3
 
 [![Energy Consumption Comparison](http://img.youtube.com/vi/MqXcb8vExsg/0.jpg)](https://www.youtube.com/watch?v=MqXcb8vExsg)
 
+## Before building
+GreenBag was designed to download via LTE and WiFi but current version does not automatically detect those network interfaces in the system. Therefore, you need to add the interface names to the corresponding lookup lists in [lookup_if_names.c](https://github.com/ducalpha/greenbag/blob/master/src/lookup_if_names.c). On a desktop with multiple network interfaces, you need to specify one into the LTE list and the other into the WiFi list.
+
 ## How to build
-This source code can be built for Android and Linux desktop platforms. The following build commands for desktops were tested on gcc 5.4.0 on Ubuntu 16.04. You can build on Android by using gcc in Android NDK.
+This source code can be built for Android and Linux desktop platforms. The following build commands for desktops were tested with gcc 5.4.0 on Ubuntu 16.04. You can build on Android by using gcc in Android NDK.
 
 * Standalone mode: In this mode, GreenBag works like a typical downloader, such as wget.  
 `make standalone`
@@ -50,10 +53,12 @@ The download time should be faster than when using wget to download over a singl
 
 You can also set bandwidth using [tcconfig](https://github.com/thombashi/tcconfig). An example script is include in [limit_bandwidth_for_testing.sh](scripts/limit_bandwidth_for_testing.sh).
 
-## Limitations of this implementation
-* Does not fully support flexible segment sizes, which should be adaptive to network conditions such as bandwidth and RTT.
-* Use disk to store in-progress file parts. Future versions should try to store them in memory.
-* Require MaxKeepAliveRequests on the server side.
+## Limitations of this version
+* Does not automatically determine the optimal segment sizes. Future versions should support flexible segment sizes and be adaptive to the changing network conditions such as bandwidth and RTT.
+* Does not automatically detect network interfaces in the system.
+* Does not automatically determine whether a network interface is LTE or WiFi.
+* Uses disk to store in-progress file parts. Future versions should try to store them in memory.
+* Requires MaxKeepAliveRequests on the server side.
 * Does not determine bitrates of videos automatically.
 * Does not setup routing tables on client automatically.
 

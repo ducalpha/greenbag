@@ -45,7 +45,9 @@ Although Android will automatically set up routing tables correctly when there a
 Run GreenBag with fixed segment sizes (`-F 1`), each segment is 2048 KB large (`-S 2048`)  
 `./gb http://143.248.140.50:8088/files/Gangnam.mp4 -F 1 -S 2048` 
 
-More options are in [gbsession.c](https://github.com/ducalpha/greenbag/blob/master/src/gbsession.c).
+The first argument is the URL to download, and later arguments are options for GreenBag. The performance mode (not energy-saving mode) is used by default.
+
+More options could be found in [gbsession.c](https://github.com/ducalpha/greenbag/blob/master/src/gbsession.c).
 
 The download time should be faster than when using wget to download over a single link:  
 `wget http://server.com/files/1GB`  

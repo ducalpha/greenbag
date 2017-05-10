@@ -2,7 +2,6 @@
 # Copyright 2017 Duc Hoang Bui, KAIST. All rights reserved.
 # Licensed under MIT (https://github.com/ducalpha/greenbag/blob/master/LICENSE)
 
-echo "Usage: $0 <clear|set>"
 
 # reset
 if [[ "$1" == "clear" ]]
@@ -15,6 +14,8 @@ then
   echo "Set bandwidth limits"
   # set
   sudo tcset --device eth0 --rate 26M --delay 50 --direction incoming && sudo tcset --device eth1 --rate 40M --delay 50 --direction incoming
+else
+  echo "Usage: $0 <clear|set>"
 fi
 
 # check

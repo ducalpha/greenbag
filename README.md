@@ -52,10 +52,10 @@ The download time should be faster than when using wget to download over a singl
 `wget --bind-address=$ip0 http://server.com/files/1GB`  
 `wget --bind-address=$ip1 http://server.com/files/1GB`
 
-## Troubleshotting
+## Troubleshooting
 If the speed of GreenBag is not faster than wget, you may check the traffic over network interfaces using [nload](https://linux.die.net/man/1/nload). The traffic of both network interfaces should be high. If network traffic flows through only one interface, please check the routing table settings.
 
-In case that the network bottleneck is on the middle boxes or the server side, bandwidth aggregation will not be faster than single-link downloading.
+In case that the network bottleneck is on the middleboxes or the server side, bandwidth aggregation will not be faster than single-link downloading.
 
 You can also throttle bandwidth for testing by using [tcconfig](https://github.com/thombashi/tcconfig). An example script is [limit_bandwidth_for_testing.sh](scripts/limit_bandwidth_for_testing.sh).
 

@@ -36,7 +36,7 @@ This source code can be built for Android and Linux desktop platforms. The follo
 `make`
 
 ## Server configuration
-I tested with an Apache2 server which allows an unlimited maximum number of requests during a persistent connection. You need to add `MaxKeepAliveRequests 0` on the server's configuration file (e.g., `/etc/apache2/apache2.conf`)
+I tested with an Apache2 server which allows an unlimited maximum number of requests during a persistent connection. Because GreenBag sends a lot of requests over persistent connections, you need to set MaxKeepAliveRequests large enough on the server's configuration file (e.g., `/etc/apache2/apache2.conf`)
 
 ## Setting routing tables for multiple network interfaces on Linux
 Although Android will automatically set up routing tables correctly when there are multiple network interfaces in the system, desktop Linux distributions typically do not. You can set up the routing tables on Linux using [setup_routing_tables.sh](scripts/setup_routing_tables.sh).
@@ -61,10 +61,10 @@ You can also throttle bandwidth for testing by running [tcconfig](https://github
 * Does not automatically detect network interfaces in the system.
 * Does not automatically determine whether a network interface is LTE or WiFi.
 * Uses disk to store in-progress file parts. Future versions should try to store them in memory.
-* Requires MaxKeepAliveRequests on the server side.
+* Requires large MaxKeepAliveRequests on the server side. Future versions should reduce number of requests sent over each persistent connection.
 * Does not determine bitrates of videos automatically.
 * Does not setup routing tables on client automatically.
 
 ## How to enable multiple network interfaces on Android
-In order to enable LTE and WiFi simultaneously on Samsung Galaxy S2 phone where the source code of the Android framework was not available, we reversed engineered and modified ConnectivityService in the Android framework. You can find details in [How to Enable Multiple Network Interfaces on Android](https://docs.google.com/document/d/1zpRF1jbZ6egCjiRn0DGuIvaAHzBEEisHnEoX3U4oupE/edit?usp=sharing).
+In order to enable LTE and WiFi simultaneously you need to modify the ConnectivityService of Android Framework. On proprietary phones where the source code of the Android Framework is not available, you may need to reverse engineer and modified the ConnectivityService. You can find details in [How to Enable Multiple Network Interfaces on Android](https://docs.google.com/document/d/1zpRF1jbZ6egCjiRn0DGuIvaAHzBEEisHnEoX3U4oupE/edit?usp=sharing).
 

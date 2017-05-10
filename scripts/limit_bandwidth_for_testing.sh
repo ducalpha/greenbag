@@ -14,7 +14,7 @@ elif [[ "$1" == "set" ]]
 then
   echo "Set bandwidth limits"
   # set
-  sudo tcset --device eth0 --rate 96M --delay 50 --direction incoming && sudo tcset --device eth1 --rate 40M --delay 50 --direction incoming
+  sudo tcset --device eth0 --rate 26M --delay 50 --direction incoming && sudo tcset --device eth1 --rate 40M --delay 50 --direction incoming
 fi
 
 # check

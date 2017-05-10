@@ -18,12 +18,13 @@ if1=$3
 ip1=$4
 default_gateway=$5
 
+# Setup 2 routing tables, one for each network interface
 sudo ip rule add from $ip0 lookup 2 prio 20
 sudo ip rule add from $ip1 lookup 3 prio 30
 
 sudo ip ro add ta 2 $ip0 dev $if0 scope link src $ip0
-
 sudo ip ro add ta 2 default via $default_gateway dev $if0
+
 sudo ip ro add ta 3 $ip1 dev $if1 scope link src $ip1
 sudo ip ro add ta 3 default via $default_gateway dev $if1
 
@@ -37,8 +38,8 @@ sudo ip ro add ta 3 default via $default_gateway dev $if1
 # 
 # $ ip ro
 # default via $default_gateway dev $if1 onlink 
-# $some_subnet/24 dev $if1  proto kernel  scope link  src $ip1 
-# $some_subnet/24 dev $if0  proto kernel  scope link  src $ip0 
+# $subnet_of_ip0/24 dev $if0  proto kernel  scope link  src $ip0 
+# $subnet_of_ip1/24 dev $if1  proto kernel  scope link  src $ip1 
 # 
 # $ ip ro sh ta 2
 # default via $default_gateway dev $if0 

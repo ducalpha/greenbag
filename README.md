@@ -48,10 +48,13 @@ Run GreenBag with fixed segment sizes (`-F 1`), each segment is 2048 KB large (`
 More options are in [gbsession.c](https://github.com/ducalpha/greenbag/blob/master/src/gbsession.c).
 
 The download time should be faster than when using wget to download over a single link:  
+`wget http://server.com/files/1GB`  
 `wget --bind-address=$ip0 http://server.com/files/1GB`  
 `wget --bind-address=$ip1 http://server.com/files/1GB`
 
-You can also set bandwidth using [tcconfig](https://github.com/thombashi/tcconfig). An example script is include in [limit_bandwidth_for_testing.sh](scripts/limit_bandwidth_for_testing.sh).
+If the speed of GreenBag is not faster than wget, please check the routing table settings and also the traffic over each network interface using [nload](https://linux.die.net/man/1/nload). In the case that the network bottleneck is on the server side, GreenBag will not be faster than downloading over one link.
+
+You can also throttle bandwidth for testing by running [tcconfig](https://github.com/thombashi/tcconfig). An example script is include in [limit_bandwidth_for_testing.sh](scripts/limit_bandwidth_for_testing.sh).
 
 ## Limitations of this version
 * Does not automatically determine the optimal segment sizes. Future versions should support flexible segment sizes and be adaptive to the changing network conditions such as bandwidth and RTT.

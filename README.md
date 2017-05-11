@@ -71,5 +71,7 @@ You can also throttle bandwidth for testing by using [tcconfig](https://github.c
 * Does not setup routing tables on client automatically.
 
 ## How to enable multiple network interfaces on Android
-In order to enable LTE and WiFi simultaneously you need to modify the ConnectivityService of Android Framework. On proprietary phones where the source code of the Android Framework is not available, you may need to reverse engineer and modified the ConnectivityService. You can find details in [How to Enable Multiple Network Interfaces on Android](https://docs.google.com/document/d/1zpRF1jbZ6egCjiRn0DGuIvaAHzBEEisHnEoX3U4oupE/edit?usp=sharing).
+In order to enable LTE and WiFi simultaneously you need to modify the ConnectivityService of Android Framework. On proprietary phones where the source code of the Android Framework is not available, you may need to reverse engineer and modify the ConnectivityService module.
+
+More details are available in [How to Enable Multiple Network Interfaces on Android](https://docs.google.com/document/d/1zpRF1jbZ6egCjiRn0DGuIvaAHzBEEisHnEoX3U4oupE/edit?usp=sharing).
 
